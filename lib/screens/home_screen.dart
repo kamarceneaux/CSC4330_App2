@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/workout_session.dart';
 
-import 'active_workout_screen.dart';
 import 'tutorials_screen.dart';
-
 import 'workout_detail_screen.dart';
 import 'workout_template_screen.dart';
 
