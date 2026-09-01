@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/workout_session.dart';
 import 'active_workout_screen.dart';
+import 'tutorials_screen.dart';
 import 'workout_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,10 +39,26 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _openTutorials() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const TutorialsScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Workout Log')),
+      appBar: AppBar(
+        title: const Text('Workout Log'),
+        actions: [
+          IconButton(
+            onPressed: _openTutorials,
+            icon: const Icon(Icons.menu_book),
+            tooltip: 'Exercise Tutorials',
+          ),
+        ],
+      ),
       body: _sessions.isEmpty
           ? const Center(child: Text('No workouts logged yet.'))
           : ListView.builder(
