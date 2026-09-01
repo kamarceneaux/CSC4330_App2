@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../models/workout_session.dart';
-import 'active_workout_screen.dart';
 import 'workout_detail_screen.dart';
+import 'workout_template_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ActiveWorkoutScreen(
+        builder: (context) => WorkoutTemplateScreen(
           onFinish: (session) {
             setState(() {
               _sessions.insert(0, session);
