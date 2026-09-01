@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import '../models/exercise.dart';
 import '../models/exercise_set.dart';
 import '../models/workout_session.dart';
+import '../models/workout_template.dart';
 
 class ActiveWorkoutScreen extends StatefulWidget {
-  const ActiveWorkoutScreen({super.key, required this.onFinish});
+  const ActiveWorkoutScreen({super.key, required this.onFinish, this.template});
 
   final void Function(WorkoutSession session) onFinish;
+  final WorkoutTemplate? template;
 
   @override
   State<ActiveWorkoutScreen> createState() => _ActiveWorkoutScreenState();
 }
 
 class _ActiveWorkoutScreenState extends State<ActiveWorkoutScreen> {
-  final List<Exercise> _exercises = [];
+  late final List<Exercise> _exercises = [
+    for (final name in widget.template?.exercises ?? const <String>[])
+      Exercise(name: name),
+  ];
 
   Future<void> _addExercise() async {
     final controller = TextEditingController();
